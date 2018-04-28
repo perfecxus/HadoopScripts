@@ -1,0 +1,96 @@
+Read Commands
+-------------
+cat
+Displays content of file on screen
+hadoop fs -cat /user/acadgild/hadoop/appended_file
+
+checksum
+Returns the checksum information of a file.
+hadoop fs -checksum /user/acadgild/hadoop/appended_file
+
+ls
+Usage: hadoop fs -ls [-d] [-h] [-R] <args>
+-d: Directories are listed as plain files.
+-h: Format file sizes in a human-readable fashion (eg 64.0m instead of 67108864).
+-R: Recursively list subdirectories encountered.
+hadoop fs -ls -R /user/acadgild/hadoop
+
+text
+Takes a source file and outputs the file in text format.
+hadoop fs -text /user/acadgild/hadoop/appended_file
+
+Write Commands
+--------------
+appendToFile
+Append single src, or multiple srcs from local file system to the destination file system.
+hadoop fs -appendToFile testfile1 testfile2 /user/acadgild/hadoop/appended_file
+
+copyFromLocal
+Copy files from local file system
+hadoop fs -copyFromLocal testfile1 /user/acadgild/hadoop/
+
+put
+Copy files from file system
+hadoop fs -put testfile2 /user/acadgild/hadoop/
+
+moveFromLocal
+Source localsrc is deleted after it’s copied
+hadoop fs -moveFromLocal testfile3 /user/acadgild/hadoop/
+
+copyToLocal
+Copy files to the file system
+hadoop fs -copyToLocal /user/acadgild/hadoop/testfile3 .
+
+get
+Copy files to the local file system
+hadoop fs -copyToLocal /user/acadgild/hadoop/testfile2 .
+
+cp
+hadoop fs -cp /user/acadgild/hadoop/testfile2 /user/acadgild/hadoop/testfile4
+
+mkdir
+Takes path as argument and creates directories.
+Options:
+The -p option creates parent directories along the path.
+Example:
+hadoop fs -mkdir /user/hadoop/dir1 /user/hadoop/dir2
+
+mv
+Moves files from source to destination
+hadoop fs -cp /user/acadgild/hadoop/testfile2 /user/acadgild/hadoop/testfile5
+
+rm
+Usage: hadoop fs -rm [-f] [-r |-R] [-skipTrash] URI [URI ...]
+Delete files/directories
+Options:
+The -f option will not display a diagnostic message or modify the exit status to reflect an error if the file does not exist.
+The -R option deletes the directory and any content under it recursively.
+The -r option is equivalent to -R.
+The -skipTrash option will bypass trash, if enabled, and delete the specified file(s) immediately. This can be useful when it is necessary to delete files from an over-quota directory.
+Example:
+hadoop fs -rm /user/acadgild/hadoop/testfile2 /user/acadgild/hadoop/testfile4
+
+
+Access Control and Other Commands
+---------------------------------
+chgrp
+chmod
+chown
+df
+du
+dus
+expunge
+find
+help
+
+tail
+Displays last kilobyte of the file to stdout
+hadoop fs -tail hadoop/appended_file
+
+touchz
+Create a file of zero length.
+hadoop fs -touchz new_file.txt
+
+usage
+Return the help for an individual command
+hadoop fs -usage touchz
